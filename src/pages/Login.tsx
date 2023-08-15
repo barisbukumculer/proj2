@@ -1,5 +1,6 @@
 import React, { useState, FormEvent } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { encrypt } from "../util";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -22,7 +23,8 @@ function Login() {
           name: "Barış Bükümcüler",
           phone: "5367767111",
         };
-        const stItem = JSON.stringify(item);
+        var stItem = JSON.stringify(item);
+        stItem=encrypt(stItem)
         localStorage.setItem("user", stItem);
         navigate("/dashboard");
       } else {
